@@ -5,6 +5,60 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv1D, Flatten, Dense
 from sklearn.preprocessing import MinMaxScaler
 
+# import requests
+# import json
+# import pandas as pd
+# from datetime import datetime, timedelta
+
+# # CoinAPI Setup
+# coinapi_url = "https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/history"
+# coinapi_headers = {
+#     "Accepts": "application/json",
+#     "X-CoinAPI-Key": "e16c2a13-94a8-4fcb-b4bc-67e6e8f72b33",  # Replace with your actual API key
+# }
+
+# # Define time range (last 24 hours)
+# end_time = datetime.utcnow()
+# start_time = end_time - timedelta(days=1)
+
+# # API Parameters
+# parameters = {
+#     "period_id": "1MIN",  # 1-minute interval data
+#     "time_start": start_time.strftime("%Y-%m-%dT%H:%M:%S"),
+#     "time_end": end_time.strftime("%Y-%m-%dT%H:%M:%S"),
+#     "limit": 1440,  # 1440 minutes in 24 hours
+# }
+
+# # Fetch Data
+# try:
+#     response = requests.get(coinapi_url, headers=coinapi_headers, params=parameters)
+#     response.raise_for_status()
+#     btc_data = response.json()
+# except requests.exceptions.RequestException as e:
+#     print(f"Error fetching BTC data from CoinAPI: {e}")
+#     exit(1)
+
+# # Process Data
+# btc_prices = []
+# for entry in btc_data:
+#     btc_prices.append([
+#         entry["time_period_start"],
+#         entry["price_open"],
+#         entry["price_high"],
+#         entry["price_low"],
+#         entry["price_close"],
+#         entry["volume_traded"]
+#     ])
+
+# # Convert to DataFrame
+# df = pd.DataFrame(btc_prices, columns=["Time", "Open", "High", "Low", "Close", "Volume"])
+
+# # Save to CSV
+# csv_file = "BTC_1Min_24H.csv"
+# df.to_csv(csv_file, index=False, encoding="utf-8")
+
+# print(f"✅ Bitcoin 1-minute data for the last 24 hours saved to {csv_file}")
+
 # Load Data
 df = pd.read_csv("BTC_1Min_24H.csv")
 
